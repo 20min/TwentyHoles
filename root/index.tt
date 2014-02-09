@@ -1,0 +1,13 @@
+Hello World
+
+<ul>
+[% FOREACH header IN c.req.headers.pairs %]
+<li>[% header.key %]: [% header.value %]</li>
+[% END %]
+</ul>
+<pre>
+[% USE Dumper;
+Dumper.dump(c.req.headers) %]
+
+
+</pre>
