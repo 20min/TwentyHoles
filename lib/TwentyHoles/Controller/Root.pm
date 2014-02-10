@@ -26,7 +26,7 @@ TwentyHoles::Controller::Root - Root Controller for TwentyHoles
 sub auto :Private {
 	my ( $self, $c ) = @_;
 	if (defined($c->req->headers->{'eve-trusted'}) && $c->req->headers->{'eve-trusted'} eq 'No' ) {
-		$c->res->body('<body onload="CCPEVE.requestTrust(\'http://localhost:3000/*\');location.reload(true);">');
+		$c->res->body('<body onload="CCPEVE.requestTrust(\'' . $c->req->base . '*\');location.reload(true);">');
 		$c->detach;
 	}
 }
