@@ -7,7 +7,7 @@ use Module::Install::Catalyst; # Complain loudly if you don't have
                                # 'make dist' to create a standalone tarball.
 
 name 'TwentyHoles';
-all_from 'lib\TwentyHoles.pm';
+all_from 'lib/TwentyHoles.pm';
 
 requires 'Catalyst::Runtime' => '5.90011';
 requires 'Catalyst::Plugin::ConfigLoader';
