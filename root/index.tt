@@ -1,13 +1,12 @@
-Hello World
+<p>Hello [% c.req.headers.eve-charname %],</p>
 
-<ul>
-[% FOREACH header IN c.req.headers.pairs %]
-<li>[% header.key %]: [% header.value %]</li>
-[% END %]
-</ul>
+<p>I see that you're in [% c.req.headers.eve-solarsystemname %] flying a
+[% c.req.headers.eve-shiptypename %] called [% c.req.headers.eve-shipname %].</p>
+
+<!--
 <pre>
 [% USE Dumper;
 Dumper.dump(c.req.headers) %]
 
-
 </pre>
+-->
