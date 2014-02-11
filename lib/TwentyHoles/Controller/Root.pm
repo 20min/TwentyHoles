@@ -24,11 +24,11 @@ TwentyHoles::Controller::Root - Root Controller for TwentyHoles
 =cut
 
 sub auto :Private {
-	my ( $self, $c ) = @_;
-	if (defined($c->req->headers->{'eve-trusted'}) && $c->req->headers->{'eve-trusted'} eq 'No' ) {
-		$c->res->body('<body onload="CCPEVE.requestTrust(\'' . $c->req->base . '*\');location.reload(true);">');
-		$c->detach;
-	}
+    my ( $self, $c ) = @_;
+    if (defined($c->req->headers->{'eve-trusted'}) && $c->req->headers->{'eve-trusted'} eq 'No' ) {
+	    $c->res->body('<body onload="CCPEVE.requestTrust(\'' . $c->req->base . '*\');setTimeout(function(){location.reload(true)},500);">');
+        $c->detach;
+    }
 }
 
 =head2 index
