@@ -1,13 +1,20 @@
-Hello World
+<html>
+<head>
+<title>Twenty Holes</title>
+</head>
+<body>
+<p>Hello [% c.req.headers.header('eve-charname') %],</p>
 
-<ul>
-[% FOREACH header IN c.req.headers.pairs %]
-<li>[% header.key %]: [% header.value %]</li>
-[% END %]
-</ul>
+<p>I see that you're in [% c.req.headers.header('eve-solarsystemname') %] flying a
+[% c.req.headers.header('eve-shiptypename') %] called [% c.req.headers.header('eve-shipname') %].</p>
+
+<!--
 <pre>
 [% USE Dumper;
 Dumper.dump(c.req.headers) %]
 
-
 </pre>
+-->
+
+<body>
+</html>
