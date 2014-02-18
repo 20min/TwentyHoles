@@ -77,9 +77,59 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 wormholes_end_systems
 
-# Created by DBIx::Class::Schema::Loader v0.07022 @ 2014-02-17 21:26:02
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:n94yt5wKf56N8jupceeqow
+Type: has_many
+
+Related object: L<TwentyHoles::DB::Result::Wormhole>
+
+=cut
+
+__PACKAGE__->has_many(
+  "wormholes_end_systems",
+  "TwentyHoles::DB::Result::Wormhole",
+  { "foreign.end_system" => "self.name" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 wormholes_start_systems
+
+Type: has_many
+
+Related object: L<TwentyHoles::DB::Result::Wormhole>
+
+=cut
+
+__PACKAGE__->has_many(
+  "wormholes_start_systems",
+  "TwentyHoles::DB::Result::Wormhole",
+  { "foreign.start_system" => "self.name" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 end_systems
+
+Type: many_to_many
+
+Composing rels: L</wormholes_start_systems> -> end_system
+
+=cut
+
+__PACKAGE__->many_to_many("end_systems", "wormholes_start_systems", "end_system");
+
+=head2 start_systems
+
+Type: many_to_many
+
+Composing rels: L</wormholes_start_systems> -> start_system
+
+=cut
+
+__PACKAGE__->many_to_many("start_systems", "wormholes_start_systems", "start_system");
+
+
+# Created by DBIx::Class::Schema::Loader v0.07022 @ 2014-02-17 22:23:40
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ZeX8TyIPbxVRxrTF9NtxlQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
