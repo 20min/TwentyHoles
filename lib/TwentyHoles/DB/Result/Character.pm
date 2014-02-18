@@ -51,7 +51,7 @@ __PACKAGE__->table("characters");
 
   data_type: 'varchar'
   is_foreign_key: 1
-  is_nullable: 1
+  is_nullable: 0
   size: 45
 
 =head2 ship_name
@@ -76,7 +76,7 @@ __PACKAGE__->add_columns(
   "character_name",
   { data_type => "varchar", is_nullable => 1, size => 100 },
   "system_name",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 1, size => 45 },
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 45 },
   "ship_name",
   { data_type => "varchar", is_nullable => 1, size => 45 },
   "last_seen",
@@ -115,17 +115,12 @@ __PACKAGE__->belongs_to(
   "system_name",
   "TwentyHoles::DB::Result::System",
   { name => "system_name" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
+  { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07022 @ 2014-02-17 22:23:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:C9ZyVFV/kPNZTaP7Qf7YwQ
+# Created by DBIx::Class::Schema::Loader v0.07022 @ 2014-02-18 21:17:45
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+zLrrfiTsab8wWROpNy3YQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
