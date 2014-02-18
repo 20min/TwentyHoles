@@ -63,7 +63,7 @@ L<TwentyHoles::Controller::Root>, L<Catalyst>
 
 =head1 AUTHOR
 
-Catalyst developer
+Carl Johnstone
 
 =head1 LICENSE
 
