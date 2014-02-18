@@ -4,6 +4,7 @@ MYMETA.yml
 Makefile
 blib/
 inc/
-/.includepath
-/.project
-/twentyholes_local.conf
+pm_to_blib
+.includepath
+.project
+twentyholes_local.conf
