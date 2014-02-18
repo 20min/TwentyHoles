@@ -2,6 +2,13 @@
 
 BEGIN {
     $ENV{CATALYST_SCRIPT_GEN} = 40;
+    $ENV{'DBIC_TRACE_PROFILE'} = 'console';
+    $ENV{'CATALYST_DEBUG'} = 1;
+    $ENV{'DBIC_TRACE'} = 1;
+    if ( $^O eq 'MSWin32') {
+        require Win32::Console::ANSI;
+        Win32::Console::ANSI->import;
+    }
 }
 
 use Catalyst::ScriptRunner;

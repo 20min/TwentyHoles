@@ -18,7 +18,9 @@ use Catalyst::Runtime 5.80;
 
 use Catalyst qw/
     ConfigLoader
+    StackTrace
     Static::Simple
+    Unicode::Encoding
 /;
 
 extends 'Catalyst';
