@@ -8,13 +8,52 @@
 <p>I see that you're in [% c.req.headers.header('eve-solarsystemname') %] flying a
 [% c.req.headers.header('eve-shiptypename') %] called [% c.req.headers.header('eve-shipname') %].</p>
 
-<!--
-<pre>
-[% USE Dumper;
-Dumper.dump(c.req.headers) %]
+<h1>Characters</h1>
+<table border="1">
+<tr>
+<th>id</th>
+<th>name</th>
+<th>system</th>
+<th>ship</th>
+<th>last seen</th>
+</tr>
+[% FOREACH character IN characters.all %]
+<tr>
+<td>[% character.character_id %]</td>
+<td>[% character.character_name %]</td>
+<td>[% character.system_name.name %]</td>
+<td>[% character.ship_name %]</td>
+<td>[% character.last_seen %]</td>
+</tr>
+[% END %]
+</table>
 
-</pre>
--->
+<h1>Systems</h1>
+<table border="1">
+<tr>
+<th>name</th>
+</tr>
+[% FOREACH system IN systems.all %]
+<tr>
+<td>[% system.name %]</td>
+</tr>
+[% END %]
+</table>
 
-<body>
+<h1>Wormhole</h1>
+<table border="1">
+<tr>
+<th>start</th>
+<th>end</th>
+</tr>
+[% FOREACH wormhole IN wormholes.all %]
+<tr>
+<td>[% wormhole.start_system %]</td>
+<td>[% wormhole.end_system %]</td>
+</tr>
+[% END %]
+</table>
+
+
+</body>
 </html>

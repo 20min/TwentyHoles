@@ -25,10 +25,21 @@ TwentyHoles::Controller::Root - Root Controller for TwentyHoles
 
 sub auto :Private {
     my ( $self, $c ) = @_;
-    if (defined($c->req->headers->{'eve-trusted'}) && $c->req->headers->{'eve-trusted'} eq 'No' ) {
-	    $c->res->body('<body onload="CCPEVE.requestTrust(\'' . $c->req->base . '*\');setTimeout(function(){location.reload(true)},500);">');
-        $c->detach;
+    if ( defined $c->req->headers->{'eve-trusted'} ) {
+        if ( $c->req->headers->{'eve-trusted'} eq 'No' ) {
+    	    $c->res->body('<body onload="CCPEVE.requestTrust(\'' . $c->req->base . '*\');setTimeout(function(){location.reload(true)},500);">');
+            $c->detach;
+        }
+        else {
+            $c->model('DB::Character')->seen_character({
+                'character_id' => $c->req->headers->{'eve-charid'},
+                'character_name' => $c->req->headers->{'eve-charname'},
+                'system_name' => $c->req->headers->{'eve-solarsystemname'},
+                'ship_name' => $c->req->headers->{'eve-shipname'},
+            });
+        }
     }
+    1;
 }
 
 =head2 index
@@ -40,6 +51,9 @@ The root page (/)
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 
+    $c->stash->{'characters'} = $c->model('DB::Character');
+    $c->stash->{'systems'} = $c->model('DB::System');
+    $c->stash->{'wormholes'} = $c->model('DB::Wormhole');
 }
 
 =head2 default
@@ -64,7 +78,7 @@ sub end : ActionClass('RenderView') {}
 
 =head1 AUTHOR
 
-Catalyst developer
+Carl Johnstone
 
 =head1 LICENSE
 
