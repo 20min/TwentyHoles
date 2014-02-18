@@ -16,7 +16,7 @@ sub seen_character {
     $character->character_name( $opts->{'character_name'} );
     $character->ship_name( $opts->{'ship_name'} );
     $character->last_seen( DateTime->now() ); #UTC default
-    $character->find_or_new_related('system_name' => {
+    $character->find_or_create_related('system_name' => {
         'name' => $opts->{'system_name'},
     });
     $character->update_or_insert;
