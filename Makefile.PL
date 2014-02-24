@@ -22,6 +22,9 @@ requires 'Catalyst::ScriptRunner'; #Probably actually only required for dev.
 requires 'Catalyst::Model::DBIC::Schema';
 requires 'Catalyst::View::TT';
 
+requires 'DateTime';
+requires 'DateTime::Format::MySQL';
+
 requires 'Config::JFDI'; #Scripts outside Cat, that use the Cat configs
 
 test_requires 'Test::More' => '0.88';
